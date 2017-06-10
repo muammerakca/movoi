@@ -25,7 +25,7 @@
             <input type="text" class="form-control" id="movie-title-search"
                    placeholder="Type the movie in the textbox and press return/button">
             <span class="input-group-btn">
-        <button class="btn btn-secondary" id="find-movie" type="button">FIND MOVIE</button>
+        <button class="btn btn-secondary" id="find-movie" type="button">SEARCH MOVIES</button>
       </span>
           </div>
         </div>
@@ -33,63 +33,75 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-8">
+    <div class="col-12">
       <div class="col-12 no-pl">
-        <!-- Movie Info -->
-        <div class="movie-info">
-          <h1 class="movie-title">Title</h1>
-          <h2 class="movie-year">Year - Released in </h2>
-          <hr>
-          <p class="movie-plot">plot</p>
-          <hr>
-          <div class="row">
-            <div class="col-4">
-              <strong class="value-title">DIRECTOR(S)</strong>
-              <p class="movie-directors"><></p>
-            </div>
-            <div class="col-8">
-              <strong class="value-title">ACTORS</strong>
-              <p class="movie-actors"><></p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-4">
-              <strong class="value-title">GENRE(S)</strong>
-              <p class="movie-genres"><></p>
-            </div>
-            <div class="col-4">
-              <strong class="value-title">WRITER(S)</strong>
-              <p class="movie-writers"><></p>
-            </div>
-            <div class="col-2">
-              <strong class="value-title">RUNTIME</strong>
-              <p class="movie-runtime"><></p>
-            </div>
-            <div class="col-2">
-              <strong class="value-title">COUNTRY</strong>
-              <p class="movie-country"><></p>
-            </div>
-          </div>
-          <hr>
-          <div class="row">
-            <div class="col-4">
-              <strong class="value-title">AWARDS</strong>
-              <p class="movie-awards"><></p>
-            </div>
-            <div class="col-3">
-              <strong class="value-title">IMDB RATING</strong>
-              <p class="movie-rating-imdb"><></p>
-            </div>
-            <div class="col-3">
-              <strong class="value-title">ROTTEN TOMATOES</strong>
-              <p class="movie-rating-rotten-tomatoes"><></p>
-            </div>
-            <div class="col-2">
-              <strong class="value-title">METACRITIC</strong>
-              <p class="movie-rating-metacritic"><></p>
-            </div>
-          </div>
+
+        <div class="navigation">
+          <a href="#" class="btn btn-default prev">Previous</a> - <a href="#" class="btn btn-default next">Next</a>
         </div>
+
+        <ul class="movie-slider">
+
+        </ul>
+
+
+        <!-- Movie Info -->
+        <!--<div class="movie-info">-->
+        <!--<h1 class="movie-title">Title</h1>-->
+        <!--<h2 class="movie-year">Year - Released in </h2>-->
+        <!--<hr>-->
+        <!--<p class="movie-plot">plot</p>-->
+        <!--<hr>-->
+        <!--<div class="row">-->
+        <!--<div class="col-4">-->
+        <!--<strong class="value-title">DIRECTOR(S)</strong>-->
+        <!--<p class="movie-directors"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-8">-->
+        <!--<strong class="value-title">ACTORS</strong>-->
+        <!--<p class="movie-actors"><></p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="row">-->
+        <!--<div class="col-4">-->
+        <!--<strong class="value-title">GENRE(S)</strong>-->
+        <!--<p class="movie-genres"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-4">-->
+        <!--<strong class="value-title">WRITER(S)</strong>-->
+        <!--<p class="movie-writers"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-2">-->
+        <!--<strong class="value-title">RUNTIME</strong>-->
+        <!--<p class="movie-runtime"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-2">-->
+        <!--<strong class="value-title">COUNTRY</strong>-->
+        <!--<p class="movie-country"><></p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<hr>-->
+        <!--<div class="row">-->
+        <!--<div class="col-4">-->
+        <!--<strong class="value-title">AWARDS</strong>-->
+        <!--<p class="movie-awards"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-3">-->
+        <!--<strong class="value-title">IMDB RATING</strong>-->
+        <!--<p class="movie-rating-imdb"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-3">-->
+        <!--<strong class="value-title">ROTTEN TOMATOES</strong>-->
+        <!--<p class="movie-rating-rotten-tomatoes"><></p>-->
+        <!--</div>-->
+        <!--<div class="col-2">-->
+        <!--<strong class="value-title">METACRITIC</strong>-->
+        <!--<p class="movie-rating-metacritic"><></p>-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--</div>-->
+
+
         <!-- No results :/ -->
         <div class="no-results">
           <h1>No results found. Please type a another movie.</h1>
@@ -97,9 +109,9 @@
       </div>
 
     </div>
-    <div class="col-4">
-      <img class="movie-poster" width="300" height="451" src="img/def-poster.jpg">
-    </div>
+    <!--<div class="col-4">-->
+    <!--<img class="movie-poster" width="300" height="451" src="img/def-poster.jpg">-->
+    <!--</div>-->
   </div>
 </div>
 <footer>

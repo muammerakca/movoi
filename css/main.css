@@ -68,9 +68,16 @@ h2{
   transition: 0.3s;
 }
 
-.movie-info, .type-movie, .no-results {
+.movie-info, .type-movie, .no-results, .results-div {
   display: none;
   margin-top: 50px;
+}
+.movie-slider{
+  margin-top: 50px;
+  padding: 20px;
+}
+.navigation{
+  float: right;
 }
 hr{
   opacity:0.5;
