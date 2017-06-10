@@ -37,7 +37,7 @@ function getMovie() {
   var movieRatingMetacritic = $(".movie-rating-metacritic");
 
   $.getJSON(
-    'http://www.omdbapi.com/?t=' + mTitle + '&plot=full&apikey=' + apiKey
+    'https://www.omdbapi.com/?t=' + mTitle + '&plot=full&apikey=' + apiKey
   )
     .done(function (Movie) {
       setDone()
