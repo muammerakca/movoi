@@ -60,31 +60,21 @@ function getMovie() {
         movieRatingIMDb.text(Movie.Ratings[0].Value)
         movieRatingRottenTomatoes.text(Movie.Ratings[1].Value)
         movieRatingMetacritic.text(Movie.Ratings[2].Value)
-
-
       } else if (Movie.Response === "False") {
         $(".movie-info").hide("100");
         $(".no-results").fadeIn("100");
+        $(".movie-poster").attr("src", "img/def-poster.jpg")
       }
-
-      // Foreach
-      //$.each(users, function(key, value) {
-      //$("#users").append("<li>" + value.real_name + "," + value.last_name + "</li>")
-      //});
     })
-    .fail(function (jqxhr, textStatus, error) {
-      console.log("Bir hata oluştu. " + err);
-    });
 }
 
 function setLoading() {
   $("#find-movie").attr("disabled", 'disabled');
   $("#find-movie").text("LOADING...");
-  $("#movie-title-search").text("")
 }
 
 function setDone() {
   $("#find-movie").removeAttr('disabled');
   $("#find-movie").text("FIND MOVIE");
-  ;
+  $("#movie-title-search").val("")
 }

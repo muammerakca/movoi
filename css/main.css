@@ -47,18 +47,25 @@ h2{
   font-size: 20px;
   padding-left: 0px;
 }
+#movie-title-search:active, #movie-title-search:focus{
+  border-bottom-color: #dadada !important;
+}
 #movie-title-search::placeholder{
   color: #c3c3c3
 }
 #find-movie{
+  background: #e8e8e8 !important;
   font-family: "Roboto", sans-serif;
   border-right: none;
   border-top: none;
   font-size: 17px;
+  transition: 0.3s;
 }
 
 #find-movie:hover{
+  background: white !important;
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .movie-info, .type-movie, .no-results {
