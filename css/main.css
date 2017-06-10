@@ -93,6 +93,10 @@ hr{
   margin-bottom: 15px;
 }
 
+.movie-item{
+  list-style-type: none;
+  display: block;
+}
 .value-title{
   font-size: 13px;
   color: #b8b8b8;

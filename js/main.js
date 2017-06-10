@@ -51,10 +51,10 @@ function getMovie() {
 
         if (Movies.totalResults > 1) {
           movieContainer.append(
-            '<div class="media">' +
+            '<li class="movie-item">' +
               '<img class="d-flex mr-3" src="' + value.Poster + '">' +
-              '<div class="media-body"><h1>' + value.Title + '</h1></div>' +
-            '</div>'
+              '<h1>' + value.Title + '</h1>' +
+            '</li>'
           )
         }
       })
