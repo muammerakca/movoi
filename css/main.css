@@ -31,14 +31,20 @@ h1 {
   margin: 0px;
   padding: 0px;
 }
-
+h2{
+  font-weight: 300;
+  color:#c3c3c3;
+}
+.no-pl{
+  padding-left: 0px;
+}
 #movie-title-search {
   font-family: "Roboto", sans-serif;
   font-weight: 300;
   border-left:none;
   border-right: none;
   border-top: none;
-  font-size: 25px;
+  font-size: 20px;
   padding-left: 0px;
 }
 #movie-title-search::placeholder{
@@ -51,11 +57,17 @@ h1 {
   font-size: 17px;
 }
 
+#find-movie:hover{
+  cursor: pointer;
+}
+
 .movie-info, .type-movie, .no-results {
   display: none;
   margin-top: 50px;
 }
-
+hr{
+  opacity:0.5;
+}
 .movie-poster {
   margin-top: 50px;
   float: right;
@@ -64,7 +76,12 @@ h1 {
 .movie-title{
   font-weight:300;
   font-size: 31px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
+}
+
+.value-title{
+  font-size: 13px;
+  color: #b8b8b8;
 }
 
 .movie-year{
@@ -72,6 +89,7 @@ h1 {
 }
 
 footer {
+  margin-top: 100px;
   font-size: 12px;
   text-transform: uppercase;
   color: gray;

@@ -22,7 +22,8 @@
       <div class="content">
         <div class="movie-finder">
           <div class="input-group">
-            <input type="text" class="form-control" id="movie-title-search" placeholder="Type the movie in the textbox and press return/button">
+            <input type="text" class="form-control" id="movie-title-search"
+                   placeholder="Type the movie in the textbox and press return/button">
             <span class="input-group-btn">
         <button class="btn btn-secondary" id="find-movie" type="button">FIND MOVIE</button>
       </span>
@@ -33,13 +34,68 @@
   </div>
   <div class="row">
     <div class="col-8">
-      <div class="movie-info">
-        <h1 class="movie-title">Title</h1>
-        <h2 class="movie-year">Year - Released in </h2>
+      <div class="col-12 no-pl">
+        <!-- Movie Info -->
+        <div class="movie-info">
+          <h1 class="movie-title">Title</h1>
+          <h2 class="movie-year">Year - Released in </h2>
+          <hr>
+          <p class="movie-plot">plot</p>
+          <hr>
+          <div class="row">
+            <div class="col-4">
+              <strong class="value-title">DIRECTOR(S)</strong>
+              <p class="movie-directors"><></p>
+            </div>
+            <div class="col-8">
+              <strong class="value-title">ACTORS</strong>
+              <p class="movie-actors"><></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-4">
+              <strong class="value-title">GENRE(S)</strong>
+              <p class="movie-genres"><></p>
+            </div>
+            <div class="col-4">
+              <strong class="value-title">WRITER(S)</strong>
+              <p class="movie-writers"><></p>
+            </div>
+            <div class="col-2">
+              <strong class="value-title">RUNTIME</strong>
+              <p class="movie-runtime"><></p>
+            </div>
+            <div class="col-2">
+              <strong class="value-title">COUNTRY</strong>
+              <p class="movie-country"><></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-4">
+              <strong class="value-title">AWARDS</strong>
+              <p class="movie-awards"><></p>
+            </div>
+            <div class="col-3">
+              <strong class="value-title">IMDB RATING</strong>
+              <p class="movie-rating-imdb"><></p>
+            </div>
+            <div class="col-3">
+              <strong class="value-title">ROTTEN TOMATOES</strong>
+              <p class="movie-rating-rotten-tomatoes"><></p>
+            </div>
+            <div class="col-2">
+              <strong class="value-title">METACRITIC</strong>
+              <p class="movie-rating-metacritic"><></p>
+            </div>
+          </div>
+        </div>
+        <!-- No results :/ -->
+        <div class="no-results">
+          No results.
+        </div>
       </div>
-      <div class="no-results">
-        No results.
-      </div>
+
     </div>
     <div class="col-4">
       <img class="movie-poster" width="300" height="451" src="img/def-poster.jpg">
@@ -56,8 +112,13 @@
   </div>
 </footer>
 </body>
-<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"
+        integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+        integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+        integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+        crossorigin="anonymous"></script>
 <script src="js/main.js" type="text/javascript"></script>
 </html>

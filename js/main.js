@@ -23,6 +23,18 @@ function getMovie() {
 
   var movieTitle = $(".movie-title");
   var movieYear = $(".movie-year");
+  var moviePoster = $(".movie-poster");
+  var moviePlot = $(".movie-plot");
+  var movieDirectors = $(".movie-directors");
+  var movieActors = $(".movie-actors");
+  var movieGenres = $(".movie-genres");
+  var movieWriters = $(".movie-writers");
+  var movieRuntime = $(".movie-runtime");
+  var movieCountry = $(".movie-country");
+  var movieAwards = $(".movie-awards");
+  var movieRatingIMDb = $(".movie-rating-imdb");
+  var movieRatingRottenTomatoes = $(".movie-rating-rotten-tomatoes");
+  var movieRatingMetacritic = $(".movie-rating-metacritic");
 
   $.getJSON(
     'http://www.omdbapi.com/?t=' + mTitle + '&plot=full&apikey=' + apiKey
@@ -35,7 +47,21 @@ function getMovie() {
         $(".no-results").hide("100");
 
         movieTitle.text(Movie.Title)
-        movieYear.text(Movie.Year)
+        movieYear.text(Movie.Year + " - Released at " + Movie.Released)
+        moviePoster.attr("src", Movie.Poster)
+        moviePlot.text(Movie.Plot)
+        movieDirectors.text(Movie.Director)
+        movieActors.text(Movie.Actors)
+        movieGenres.text(Movie.Genre)
+        movieWriters.text(Movie.Writer)
+        movieRuntime.text(Movie.Runtime)
+        movieCountry.text(Movie.Country)
+        movieAwards.text(Movie.Awards)
+        movieRatingIMDb.text(Movie.Ratings[0].Value)
+        movieRatingRottenTomatoes.text(Movie.Ratings[1].Value)
+        movieRatingMetacritic.text(Movie.Ratings[2].Value)
+
+
       } else if (Movie.Response === "False") {
         $(".movie-info").hide("100");
         $(".no-results").fadeIn("100");
@@ -54,6 +80,7 @@ function getMovie() {
 function setLoading() {
   $("#find-movie").attr("disabled", 'disabled');
   $("#find-movie").text("LOADING...");
+  $("#movie-title-search").text("")
 }
 
 function setDone() {
