@@ -195,23 +195,28 @@ function loadStoraged() {
   sidebarMovies.html("");
   $.each(localStorage, function (key, value) {
     sidebarMovies.append(
-      '<li class="sidebar-movie-item" href="" data-imdb="' + value + '" onClick="getMovieFromIMDbID(this)">' + key + '</li>'
+      '<li class="sidebar-movie-item" href="" data-imdb="' + value + '" onClick="getMovieFromIMDbID(this)"><i class="fa fa-film si-i"></i> ' + key + '</li>'
     )
   })
 
-  if (localStorage.length === 0) {
-    $(".your-movies-title").text("Your Movies");
-  } else {
-    $(".your-movies-title").text("Your Movies [" + localStorage.length + "]");
-  }
+  checkLocalStoragecount();
 }
+
 function clearLocalStorage() {
   if (confirm('Are you sure you want to clear your movie list?')) {
     localStorage.clear();
     sidebarMovies.html("");
     loadLocalStoragedMovies()
+    checkLocalStoragecount();
   } else {
 
+  }
+}
+function checkLocalStoragecount() {
+  if (localStorage.length === 0) {
+    $(".m-count").hide()
+  } else {
+    $(".m-count").text(localStorage.length);
   }
 }
 function showNotification() {
