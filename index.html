@@ -4,121 +4,131 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
         integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=latin-ext" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700&amp;subset=latin-ext" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/main.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>movoi</title>
 </head>
 <body>
-<div class="popup-overlay" style="display:none">
-  <h1>Loading...</h1>
-</div>
+<div class="notification">Movie is added.</div>
 <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <div class="container">
-    <a class="navbar-brand" href="#">movoi</a>
+  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+          aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <a class="navbar-brand" href="#">M</a>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">My Movies</a>
+      </li>
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="text" id="movie-title-search"
+             placeholder="Search for movies" ...>
+      <button class="btn btn-outline-success my-2 my-sm-0" id="find-movie" type="submit"><i class="fa fa-search"></i></button>
+    </form>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <div class="col-12">
-      <div class="content">
-        <div class="movie-finder">
-          <div class="input-group">
-            <input type="text" class="form-control" id="movie-title-search"
-                   placeholder="Type the movie in the textbox and press return/button">
-            <span class="input-group-btn">
-        <button class="btn btn-secondary" id="find-movie" type="button">SEARCH MOVIES</button>
-      </span>
-          </div>
+<div class="container-fluid">
+  <div class="content">
+    <div class="row">
+      <div class="col-2">
+        <div class="my-movies">
+          <ul class="sidebar-movie-list">
+            <h2>Your Movies</h2>
+            <p>No movies in your list.</p>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12">
-      <div class="col-12 no-pl no-pr">
-
-        <div class="sw-container"></div>
-
-        <div class="navigation">
-          <a href="#" onclick="prevItem()" class="btn btn-primary prev">Previous</a> <a href="#" onclick="nextItem()"
-                                                                                        class="btn btn-primary next">Next</a>
-        </div>
-
-        <div class="mv-slider">
-          <ul class="movie-slider">
+      <div class="col-8">
+        <div class="middle-movie-list">
+          <h1 class="no-movie-header">
+            <i class="fa fa-search fa-3x"></i>
+            <p>Use the search box to find movies...</p>
+          </h1>
+          <ul class="search-movie-list">
 
           </ul>
         </div>
       </div>
 
-    </div>
-    <!--<div class="col-4">-->
-    <!--<img class="movie-poster" width="300" height="451" src="img/def-poster.jpg">-->
-    <!--</div>-->
-  </div>
-</div>
-<div class="movie-info">
-  <a href="#" onclick="closePopup()" class="close-popup">Close X</a>
-  <h1 class="movie-title">Loading...</h1>
-  <h2 class="movie-year">Loading...</h2>
-  <hr>
-  <p class="movie-plot">Loading...</p>
-  <hr>
-  <div class="row">
-    <div class="col-4">
-      <strong class="value-title">DIRECTOR(S)</strong>
-      <p class="movie-directors"><></p>
-    </div>
-    <div class="col-8">
-      <strong class="value-title">ACTORS</strong>
-      <p class="movie-actors"><></p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-4">
-      <strong class="value-title">GENRE(S)</strong>
-      <p class="movie-genres"><></p>
-    </div>
-    <div class="col-4">
-      <strong class="value-title">WRITER(S)</strong>
-      <p class="movie-writers"><></p>
-    </div>
-    <div class="col-2">
-      <strong class="value-title">RUNTIME</strong>
-      <p class="movie-runtime"><></p>
-    </div>
-    <div class="col-2">
-      <strong class="value-title">COUNTRY</strong>
-      <p class="movie-country"><></p>
-    </div>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-4">
-      <strong class="value-title">AWARDS</strong>
-      <p class="movie-awards"><></p>
-    </div>
-    <div class="col-3">
-      <strong class="value-title">IMDB RATING</strong>
-      <p class="movie-rating-imdb"><></p>
-    </div>
-    <div class="col-3">
-      <strong class="value-title">ROTTEN TOMATOES</strong>
-      <p class="movie-rating-rotten-tomatoes"><></p>
-    </div>
-    <div class="col-2">
-      <strong class="value-title">METACRITIC</strong>
-      <p class="movie-rating-metacritic"><></p>
+      <div class="col-2 no-pl">
+        <div class="sidebar-movie-info-loading">Hold on, loading movie details...</div>
+        <div class="movie-info">
+          <div class="poster">
+            <span class="movie-year"></span>
+            <img class="movie-poster" src="img/def-poster.jpg">
+          </div>
+          <h1 class="movie-title">Select a movie...</h1>
+          <hr>
+          <p class="movie-plot"><></p>
+          <hr>
+          <div class="row">
+            <div class="col-12">
+              <strong class="value-title">DIRECTOR(S)</strong>
+              <p class="movie-directors"><></p>
+            </div>
+            <div class="col-12">
+              <strong class="value-title">ACTORS</strong>
+              <p class="movie-actors"><></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <strong class="value-title">GENRE(S)</strong>
+              <p class="movie-genres"><></p>
+            </div>
+            <div class="col-6">
+              <strong class="value-title">WRITER(S)</strong>
+              <p class="movie-writers"><></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <strong class="value-title">RUNTIME</strong>
+              <p class="movie-runtime"><></p>
+            </div>
+            <div class="col-6">
+              <strong class="value-title">COUNTRY</strong>
+              <p class="movie-country"><></p>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-12">
+              <strong class="value-title">AWARDS</strong>
+              <p class="movie-awards"><></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <strong class="value-title">IMDB</strong>
+              <p class="movie-rating-imdb"><></p>
+            </div>
+            <div class="col-12">
+              <strong class="value-title">ROTTEN TOMATOES</strong>
+              <p class="movie-rating-rotten-tomatoes"><></p>
+            </div>
+            <div class="col-12">
+              <strong class="value-title">METACRITIC</strong>
+              <p class="movie-rating-metacritic"><></p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
 <footer>
-  <div class="container">
+  <div class="container-fluid">
     <div class="row">
       <div class="col-12">
-        A simple tool created by Cerem Beyazıt / 2017
+        v0.40 beta
       </div>
     </div>
   </div>

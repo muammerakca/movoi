@@ -5,7 +5,7 @@ $(document).ready(function () {
 
 
 $("#find-movie").click(function () {
-  getMovie();
+  getMovies();
   setLoading();
 });
 
@@ -16,20 +16,21 @@ $("#movie-title-search").on('keypress', function (e) {
   }
 });
 
-$(".close-popup").click(function () {
-  $(".movie-info").fadeOut(200);
-  $(".popup-overlay").fadeOut(200);
-});
-
-$(".popup-overlay").click(function () {
-  $(".movie-info").fadeOut(200);
-  $(".popup-overlay").fadeOut(200);
-});
+// $(".close-popup").click(function () {
+//   $(".movie-info").fadeOut(200);
+//   $(".popup-overlay").fadeOut(200);
+// });
+//
+// $(".popup-overlay").click(function () {
+//   $(".movie-info").fadeOut(200);
+//   $(".popup-overlay").fadeOut(200);
+// });
 
 function getMovies() {
   var mTitle = $("#movie-title-search").val();
   var apiKey = "cfcb4f93";
-  var movieContainer = $('.movie-slider')
+  var movieContainer = $('.search-movie-list')
+  var noMovieheader = $('.no-movie-header');
 
   // Veri varsa boşaltalım
   movieContainer.html("");
@@ -42,26 +43,29 @@ function getMovies() {
 
       $.each(Movies.Search, function (key, value) {
         if (Movies.totalResults > 1) {
+          noMovieheader.hide();
           movieContainer.append(
             '<li class="movie-item">' +
-            '<img class="d-flex mr-3" src="' + value.Poster + '">' +
+            '<img src="' + value.Poster + '" class="search-list-poster">' +
             '<h1>' + value.Title + '</h1>' +
-            '<a class="open-details" href="#" data-imdb="' + value.imdbID  + '" onClick="getMovieFromIMDbID(this)">Details</a>' +
+            '<h2>' + value.Year + '</h2>' +
+            '<a class="open-details" href="#" data-imdb="' + value.imdbID + '" onClick="getMovieFromIMDbID(this)">Details</a>' +
+            '<a class="add-to-list" href="#" data-title="' + value.Title + '" data-imdb-id="' + value.imdbID + '" onClick="addToList(this)">Add To List</a>' +
             '</li>'
           )
-          sliderResize()
+        } else {
+          $('.no-movie-header').show();
+          $('.no-movie-header p').text("No titles found.");
         }
       })
-
     })
 }
 
 function getMovieFromIMDbID(e) {
+  $('.movie-info').hide();
+  $('.sidebar-movie-info-loading').show();
+
   var movieID = e.getAttribute('data-imdb');
-
-  $('.popup-overlay').fadeIn(200);
-
-
   var apiKey = "cfcb4f93";
   var IMDbId = movieID;
 
@@ -70,7 +74,8 @@ function getMovieFromIMDbID(e) {
   )
     .done(function (Movie) {
 
-      $('.movie-info').fadeIn(200);
+      $('.sidebar-movie-info-loading').hide();
+      $('.movie-info').show();
 
       var movieTitle = $(".movie-title");
       var movieYear = $(".movie-year");
@@ -88,68 +93,85 @@ function getMovieFromIMDbID(e) {
       var movieRatingMetacritic = $(".movie-rating-metacritic");
 
       if (Movie.Response === "True") {
-        movieTitle.text(Movie.Title)
-        movieYear.text(Movie.Year + " - Released at " + Movie.Released)
-        moviePoster.attr("src", Movie.Poster)
-        moviePlot.text(Movie.Plot)
-        movieDirectors.text(Movie.Director)
-        movieActors.text(Movie.Actors)
-        movieGenres.text(Movie.Genre)
-        movieWriters.text(Movie.Writer)
-        movieRuntime.text(Movie.Runtime)
-        movieCountry.text(Movie.Country)
-        movieAwards.text(Movie.Awards)
-        movieRatingIMDb.text(Movie.Ratings[0].Value)
-        movieRatingRottenTomatoes.text(Movie.Ratings[1].Value)
-        movieRatingMetacritic.text(Movie.Ratings[2].Value)
+        movieTitle.text(Movie.Title);
+        movieYear.text(Movie.Year);
+        moviePoster.attr("src", Movie.Poster);
+        moviePlot.text(Movie.Plot);
+        movieDirectors.text(Movie.Director);
+        movieActors.text(Movie.Actors);
+        movieGenres.text(Movie.Genre);
+        movieWriters.text(Movie.Writer);
+        movieRuntime.text(Movie.Runtime);
+        movieCountry.text(Movie.Country);
+        movieAwards.text(Movie.Awards);
+        movieRatingIMDb.text(Movie.Ratings[0].Value);
+        movieRatingRottenTomatoes.text(Movie.Ratings[1].Value);
+        movieRatingMetacritic.text(Movie.Ratings[2].Value);
       } else if (Movie.Response === "False") {
         // False
       }
     })
 }
-function sliderResize() {
-  var sWidth = $(".sw-container").width();
-  $(".movie-item").css("width", sWidth);
-
-  var slideCount = $(".movie-slider li").length;
-  var slideWidth = $(".movie-item").width();
-  var slideHeight = $(".movie-item").height();
-
-  $('.movie-slider').css("width", slideCount * slideWidth, "height", slideHeight);
-  $('.mv-slider').css("width", sWidth);
-  $('.movie-slider').css("left", "0px");
-
-}
-function prevItem() {
-  var mvSlider = $(".movie-slider")
-  var mvSliderWidth = $(".movie-item").width();
-
-  $(mvSlider).animate({
-    left: + mvSliderWidth
-  }, 200, function () {
-    $('.movie-slider li:last-child').prependTo('.movie-slider');
-    $('.movie-slider').css('left', '');
-  });
-}
-
-function nextItem() {
-  var mvSlider = $(".movie-slider")
-  var mvSliderWidth = $(".movie-item").width();
-
-  $(mvSlider).animate({
-    left: - mvSliderWidth
-  }, 200, function () {
-    $('.movie-slider li:first-child').appendTo('.movie-slider');
-    $('.movie-slider').css('left', '');
-  });
-}
+// function sliderResize() {
+//   var sWidth = $(".sw-container").width();
+//   $(".movie-item").css("width", sWidth);
+//
+//   var slideCount = $(".movie-slider li").length;
+//   var slideWidth = $(".movie-item").width();
+//   var slideHeight = $(".movie-item").height();
+//
+//   $('.movie-slider').css("width", slideCount * slideWidth, "height", slideHeight);
+//   $('.mv-slider').css("width", sWidth);
+//   $('.movie-slider').css("left", "0px");
+//
+// }
+// function prevItem() {
+//   var mvSlider = $(".movie-slider")
+//   var mvSliderWidth = $(".movie-item").width();
+//
+//   $(mvSlider).animate({
+//     left: + mvSliderWidth
+//   }, 200, function () {
+//     $('.movie-slider li:last-child').prependTo('.movie-slider');
+//     $('.movie-slider').css('left', '');
+//   });
+// }
+//
+// function nextItem() {
+//   var mvSlider = $(".movie-slider")
+//   var mvSliderWidth = $(".movie-item").width();
+//
+//   $(mvSlider).animate({
+//     left: - mvSliderWidth
+//   }, 200, function () {
+//     $('.movie-slider li:first-child').appendTo('.movie-slider');
+//     $('.movie-slider').css('left', '');
+//   });
+// }
 function setLoading() {
   $("#find-movie").attr("disabled", 'disabled');
-  $("#find-movie").text("SEARCHING...");
 }
 
 function setDone() {
   $("#find-movie").removeAttr('disabled');
-  $("#find-movie").text("SEARCH MOVIES");
   $("#movie-title-search").val("");
+}
+function addToList(e) {
+  var movieTitle = e.getAttribute('data-title');
+  var movieIMDbId = e.getAttribute('data-imdb-id');
+
+  if (movieIMDbId in localStorage) {
+    alert("bu var zaten var aq")
+  } else {
+    localStorage.setItem(movieTitle, movieIMDbId);
+    showNotification();
+  }
+
+}
+
+function showNotification() {
+  $('.notification').fadeIn(300);
+  setTimeout(function () {
+    $('.notification').fadeOut(300);
+  }, 1000);
 }
