@@ -24,24 +24,29 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">My Movies</a>
+        <a class="nav-link">Your movie collector</a>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" id="movie-title-search"
              placeholder="Search for movies" ...>
-      <button class="btn btn-outline-success my-2 my-sm-0" id="find-movie" type="submit"><i class="fa fa-search"></i></button>
+      <button class="btn btn-outline-success my-2 my-sm-0" id="find-movie" type="submit"><i class="fa fa-search"></i>
+      </button>
     </form>
   </div>
 </nav>
 <div class="container-fluid">
   <div class="content">
     <div class="row">
-      <div class="col-2">
+      <div class="col-2" id="sidebar">
         <div class="my-movies">
           <ul class="sidebar-movie-list">
-            <h2>Your Movies</h2>
-            <p>No movies in your list.</p>
+            <h2 class="your-movies-title">Your Movies</h2>
+            <p class="sidebar-no-movies">No movies in your list.</p>
+            <ul class="sidebar-movies">
+
+            </ul>
+            <p class="clear-sidebar-movie-list"><a href="#" onclick="clearLocalStorage()">Clear list</a></p>
           </ul>
         </div>
       </div>
@@ -49,7 +54,7 @@
         <div class="middle-movie-list">
           <h1 class="no-movie-header">
             <i class="fa fa-search fa-3x"></i>
-            <p>Use the search box to find movies...</p>
+            <p>Use the search box for explore movies...</p>
           </h1>
           <ul class="search-movie-list">
 
@@ -124,15 +129,6 @@
     </div>
   </div>
 </div>
-<footer>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-12">
-        v0.40 beta
-      </div>
-    </div>
-  </div>
-</footer>
 </body>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>

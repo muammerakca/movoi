@@ -1,6 +1,10 @@
+sidebarMovies = $(".sidebar-movies");
+
 $(document).ready(function () {
   $("#movie-title-search").focus();
   $(".no-results").hide();
+
+  loadLocalStoragedMovies()
 });
 
 
@@ -8,6 +12,7 @@ $("#find-movie").click(function () {
   getMovies();
   setLoading();
 });
+
 
 $("#movie-title-search").on('keypress', function (e) {
   if (e.which === 13) {
@@ -31,6 +36,7 @@ function getMovies() {
   var apiKey = "cfcb4f93";
   var movieContainer = $('.search-movie-list')
   var noMovieheader = $('.no-movie-header');
+  $('.no-movie-header p').text("Searching...");
 
   // Veri varsa boşaltalım
   movieContainer.html("");
@@ -42,8 +48,8 @@ function getMovies() {
       setDone()
 
       $.each(Movies.Search, function (key, value) {
-        if (Movies.totalResults > 1) {
-          noMovieheader.hide();
+        if (Movies.totalResults > 0) {
+          noMovieheader.hide()
           movieContainer.append(
             '<li class="movie-item">' +
             '<img src="' + value.Poster + '" class="search-list-poster">' +
@@ -56,6 +62,7 @@ function getMovies() {
         } else {
           $('.no-movie-header').show();
           $('.no-movie-header p').text("No titles found.");
+          alert("nothing")
         }
       })
     })
@@ -160,15 +167,53 @@ function addToList(e) {
   var movieTitle = e.getAttribute('data-title');
   var movieIMDbId = e.getAttribute('data-imdb-id');
 
-  if (movieIMDbId in localStorage) {
-    alert("bu var zaten var aq")
-  } else {
+  // Film listede varsa uyarı verelim, yalnız bunu IMDb id ile yapsak daha sağlıklı çünkü aynı isimle filmler var.
+  if (localStorage.getItem(movieTitle) === null) {
     localStorage.setItem(movieTitle, movieIMDbId);
     showNotification();
+    loadLocalStoragedMovies()
+  } else {
+    alert("This movie is already in your list.")
   }
-
 }
 
+function loadLocalStoragedMovies() {
+  var sidebarHolder = $(".sidebar-no-movies");
+  var clearListButton = $(".clear-sidebar-movie-list");
+
+  if (localStorage.length > 0) {
+    sidebarHolder.hide();
+    clearListButton.show();
+    loadStoraged()
+  } else {
+    sidebarHolder.show();
+    clearListButton.hide();
+  }
+}
+
+function loadStoraged() {
+  sidebarMovies.html("");
+  $.each(localStorage, function (key, value) {
+    sidebarMovies.append(
+      '<li class="sidebar-movie-item" href="" data-imdb="' + value + '" onClick="getMovieFromIMDbID(this)">' + key + '</li>'
+    )
+  })
+
+  if (localStorage.length === 0) {
+    $(".your-movies-title").text("Your Movies");
+  } else {
+    $(".your-movies-title").text("Your Movies [" + localStorage.length + "]");
+  }
+}
+function clearLocalStorage() {
+  if (confirm('Are you sure you want to clear your movie list?')) {
+    localStorage.clear();
+    sidebarMovies.html("");
+    loadLocalStoragedMovies()
+  } else {
+
+  }
+}
 function showNotification() {
   $('.notification').fadeIn(300);
   setTimeout(function () {

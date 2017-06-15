@@ -54,13 +54,42 @@ h2 {
   padding: 5px;
   font-size: 14px;
 }
-.add-to-list{
+
+.add-to-list {
   margin-right: 5px;
 }
+
 .open-details:hover, .add-to-list:hover {
   background-color: #cacaca;
   text-decoration: none;
   color: white;
+}
+
+.sidebar-movies {
+  margin: 0px;
+  padding: 0px;
+}
+
+.sidebar-movie-item {
+  list-style-type: none;
+  border-bottom: solid 1px #f0f0f0;
+  padding: 5px 0px;
+  transition: 0.3s;
+}
+
+.sidebar-movie-item:hover {
+  cursor: pointer;
+  padding-left: 5px;
+  background-color: #eeeeee;
+  transition: 0.3s;
+}
+
+.clear-sidebar-movie-list{
+  display: none;
+  margin-top: 5px;
+}
+.sidebar-no-movies {
+  display: none;
 }
 
 .no-pr {
@@ -152,7 +181,8 @@ hr {
   margin-bottom: 15px;
   font-family: "Roboto Condensed";
 }
-.notification{
+
+.notification {
   display: none;
   position: absolute;
   border-radius: 3px;
@@ -163,15 +193,18 @@ hr {
   background-color: rgba(117, 119, 121, 0.62);
   color: white;
 }
+
 .search-movie-list {
   clear: both;
   margin: 0px;
   padding: 15px 0px 0px 0px;
   overflow: hidden;
 }
-.search-movie-list li:hover{
+
+.search-movie-list li:hover {
   *background-color: #c3c3c3;
 }
+
 .movie-item {
   list-style-type: none;
   display: block;
@@ -189,12 +222,14 @@ hr {
   font-family: Roboto Condensed;
   font-size: 23px;
 }
-.movie-item h2{
-  display:block;
+
+.movie-item h2 {
+  display: block;
   margin-top: 10px;
   font-size: 15px;
   float: left;
 }
+
 .search-list-poster {
   float: left;
   width: 60px;
