@@ -1,4 +1,5 @@
-sidebarMovies = $(".sidebar-movies");
+var sidebarMovies = $(".sidebar-movies");
+var apiKey = "cfcb4f93"
 
 $(document).ready(function () {
   $("#movie-title-search").focus();
@@ -33,9 +34,10 @@ $("#movie-title-search").on('keypress', function (e) {
 
 function getMovies() {
   var mTitle = $("#movie-title-search").val();
-  var apiKey = "cfcb4f93";
   var movieContainer = $('.search-movie-list')
   var noMovieheader = $('.no-movie-header');
+
+  noMovieheader.show();
   $('.no-movie-header p').text("Searching...");
 
   // Veri varsa boşaltalım
@@ -46,10 +48,9 @@ function getMovies() {
   )
     .done(function (Movies) {
       setDone()
-
       $.each(Movies.Search, function (key, value) {
-        if (Movies.totalResults > 0) {
-          noMovieheader.hide()
+        if (Movies.Response === 'True') {
+          noMovieheader.hide();
           movieContainer.append(
             '<li class="movie-item">' +
             '<img src="' + value.Poster + '" class="search-list-poster">' +
@@ -60,9 +61,8 @@ function getMovies() {
             '</li>'
           )
         } else {
-          $('.no-movie-header').show();
+          noMovieheader.show();
           $('.no-movie-header p').text("No titles found.");
-          alert("nothing")
         }
       })
     })
@@ -73,7 +73,6 @@ function getMovieFromIMDbID(e) {
   $('.sidebar-movie-info-loading').show();
 
   var movieID = e.getAttribute('data-imdb');
-  var apiKey = "cfcb4f93";
   var IMDbId = movieID;
 
   $.getJSON(
