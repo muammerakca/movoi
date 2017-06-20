@@ -209,13 +209,13 @@ hr {
 
 .notification {
   display: none;
-  position: absolute;
+  position: fixed;
   border-radius: 3px;
   right: 15px;
   bottom: 15px;
   padding: 10px;
   z-index: 10;
-  background-color: rgba(117, 119, 121, 0.62);
+  background-color: rgba(18, 106, 121, 0.69);
   color: white;
 }
 

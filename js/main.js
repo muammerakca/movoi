@@ -123,10 +123,10 @@ function addToList(e) {
   // Film listede varsa uyarı verelim, yalnız bunu IMDb id ile yapsak daha sağlıklı çünkü aynı isimle filmler var.
   if (localStorage.getItem(movieTitle) === null) {
     localStorage.setItem(movieTitle, movieIMDbId);
-    showNotification();
+    showNotification(movieTitle + " is added to your list.");
     loadLocalStoragedMovies()
   } else {
-    alert('This movie is already in your list.');
+    showNotification("This movie is already in your list.")
   }
 }
 
@@ -172,9 +172,14 @@ function checkLocalStoragecount() {
     $('.m-count').text(localStorage.length);
   }
 }
-function showNotification() {
-  $('.notification').fadeIn(300);
+function showNotification(notificationText) {
+  var notPopup = $('.notification');
+  var notText = $('.notification-text');
+
+  notText.text(notificationText)
+  notPopup.fadeIn(300);
+
   setTimeout(function () {
-    $('.notification').fadeOut(300);
+    notPopup.fadeOut(300);
   }, 1000);
 }
